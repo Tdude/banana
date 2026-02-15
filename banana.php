@@ -151,15 +151,15 @@ function banana_render_form_shortcode(): string {
 
     ob_start();
     ?>
-    <form method="post" action="">
+    <form method="post" action="" class="banana-form">
         <?php wp_nonce_field('banana_submit', 'banana_nonce'); ?>
         <input type="hidden" name="procaptcha" value="<?php echo esc_attr((string) $captcha_token); ?>" />
         <input type="text" name="website" value="" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px;" aria-hidden="true" />
 
         <?php if ($status === 'success') : ?>
-            <p style="color:green;"><?php echo esc_html($message !== '' ? $message : __('Tack! Du är nu registrerad.', 'banana')); ?></p>
+            <p class="banana-alert banana-success"><?php echo esc_html($message !== '' ? $message : __('Tack! Du är nu registrerad.', 'banana')); ?></p>
         <?php elseif ($status === 'error') : ?>
-            <p style="color:red;"><?php echo esc_html($message !== '' ? $message : __('Något gick fel. Försök igen.', 'banana')); ?></p>
+            <p class="banana-alert banana-error"><?php echo esc_html($message !== '' ? $message : __('Något gick fel. Försök igen.', 'banana')); ?></p>
         <?php endif; ?>
 
         <p>
